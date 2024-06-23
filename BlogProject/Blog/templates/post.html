@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} Post-Create {% endblock %}
+
+{% block body %}
+
+<div class="container col-12  py-2  " >
+            <div class="container col-6 py-3 px-5 mt-5  border border-dark bg-white " >
+                <h1 class="text-center  mb-2 " >Post</h1>
+                    {% if error_msg %}
+                        <p class="text-danger fs-5 fw-bolder " > {{ error_msg }} </p>
+                    {% endif %}
+                <form   action="{% url 'make_post' %} " method="post"  >
+                        {% csrf_token %}
+                    <div class="pb-3 fs-6 " >
+                            <label class="form-label fw-bold " >Title</label>
+                            <input class="form-control" placeholder="Enter Title"  type="text" name="title" >
+                    </div>
+
+                    <div class="pb-3 fs-6 " >
+                            <label class="form-label fw-bold " >Body</label>
+                            <textarea class="form-control " name="body" style="height:200px;" >  </textarea>
+                    </div>
+                    <div class="text-center" >
+                        <button  class="col-6 btn btn-primary py-2 " type="submit" >Make Post</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+
+{% endblock %}
